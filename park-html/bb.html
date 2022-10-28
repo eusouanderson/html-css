@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Banco do Brasil</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="icon" href="/aapf/im/bbfav.ico"/>
+		<link rel="shortcut icon" href="/aapf/im/bbfav.ico"/>
+		<meta name="description" content="Realize muitas transações com facilidade, comodidade e segurança. Acesse já o Autoatendimento pessoa física do Banco do Brasil.">
+		<meta name="keywords" content="autoatendimento, autoatendimento bb, autoatendimento banco do brasil ">
+		<meta http-equiv="Cache-Control" content="no-cache">		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="/aapf/css/angular-material.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/aapf/css/loginbb.css?v=1.26"/>
+		<script type="text/javascript" src="/aapf/js/servicos/bbtm.js"></script>
+	
+	
+		<script type="text/javascript" src="/aapf/js/lib/jquery-1.9.1.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/jquery.mask.min.js"></script>
+    	<script type="text/javascript" src="/aapf/includes/js/jquery-ui-1.10.3.custom.min.js?1.0"></script>		
+		<script type="text/javascript" src="/aapf/js/lib/angular.min.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/angular-animate.min.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/angular-cookies.min.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/angular-messages.min.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/angular-route.min.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/angular-aria.min.js"></script>
+		<script type="text/javascript" src="/aapf/js/lib/angular-material.min.js"></script>
+		
+		<script type="text/javascript" src="/aapf/js/lib/indexeddb.js"></script>
+		<script type="text/javascript" src="/aapf/js/app-login.js?v=1.26"></script>
+		<script type="text/javascript" src="/aapf/js/diretivas/diretivas.js?v=1.26"></script>
+		<script type="text/javascript" src="/aapf/js/servicos/servicos.js?v=1.26"></script>
+		<script type="text/javascript" src="/aapf/js/controles/controle-login.js?v=1.26"></script>
+		<script type="text/javascript" src="/aapf/js/controles/controle-login-ajuda-senha.js?v=1.26"></script>		
+    	<script type="text/javascript" src="/aapf/includes/js/bbassinador-api.js"></script>
+		<script type="text/javascript" src="/aapf/includes/js/aapf.js?v=1.26"></script>
+    	<script type="text/javascript" src="/aapf/includes/js/ajax.js?v=1.26"></script>
+    	<script type="text/javascript" id="linkThredMetrix"></script>
+	</head>
+	<body id="bbLogin" class="bbLogin" ng-app="bbLogin" ng-controller="controleLogin" ng-class="usuario.dadosComplementares.segmento ? usuario.dadosComplementares.segmento : 'geral'">
+		<header>
+			<div>
+				<div class="loading"><div ng-style = "{width :percentualCarregamento + '%'}"></div></div>
+				<a class="logo" title="Banco do Brasil" alt="Banco do Brasil" ng-click="portal()"></a>
+				<h1>
+					<span ng-dblclick = "configCliente($event);">Autoatendimento</span>
+				</h1>
+			</div>
+		</header>
+		<div id="conteudo">
+			<div class="caixas-login" ng-class="carregando === 1 ? 'loading-interno': '' " ng-if="verificaInstalacao">
+				<div  class="caixa-bb-code ng-hide" ng-show="exibirbbcode" >
+					<h1 ng-dblclick = "configClienteBBCode($event);">Acesso com BB Code</h1>
+					<span class = "ng-hide bb-code-wait" ng-show="bbcodewait"></span>
+					<bb-code ng-if="!bbcodewait"></bb-code>
+					<bb-code-erro-plugin ng-if="erroPluginQrCode"></bb-code-erro-plugin>
+					<div class="info-piloto" ng-if="!bbcodewait && exibirMensagemPilotoFunci">{{mensagemPiloto}}</div>										
+				</div>
+				<div  class="caixa-bb-code-hide ng-hide" ng-show="!exibirbbcode" ></div>				
+				<div data-ng-view="" id="ng-view" class="caixa"></div>
+			</div>
+		</div>
+		<noscript>
+           <iframe id="linkThredMetrixx" style="width: 100px; height: 100px; border: 0; position: absolute; top: -5000px;"></iframe>
+       </noscript>
+	</body>
+</html>
